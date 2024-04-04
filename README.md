@@ -6,4 +6,6 @@
 - works with push and pull commands
 - The only thing you need to do that your ANSIBLE Server should be able to SSH to the nodes that need configuration management.
 
-### How can we create ANSIBLE
+### ANSIBLE can be operated in 2 ways
+    - Manual way        ( No code approach and its 100% not recommended)
+    - Automated way     ( YAML : playbooks )
