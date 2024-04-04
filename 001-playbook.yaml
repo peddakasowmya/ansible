@@ -14,11 +14,11 @@
   tasks: 
     - name: Task1 of Play2
       ansible.builtin.debug:
-        msg: "Hai from task1 of play2"
+        msg: "Namasthe from task1 of play2"
 
     - name: Task2 of Play2
       ansible.builtin.debug:
-        msg: "Hello from task2 of play2"
+        msg: "Ola from task2 of play2"
 
 
 
