@@ -21,3 +21,5 @@ To ansible, we need to supply the list of servers that needs to be amanaged by A
 
 ### Ansible is all about module
 
+
+ansible all -i inventory -e ansible_user=centos -e ansible_password=DevOps321 -m shell -a "df -h"
