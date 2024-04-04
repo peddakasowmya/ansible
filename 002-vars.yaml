@@ -1,0 +1,8 @@
+- name: Demo on Vars
+  hosts: all
+  vars:
+    URL: play.google.com    #Play level variable, if you declare variable at play level all the tasks can inherit them.
+  tasks: 
+    - name: Printing URL
+      ansible.builtin.debug:
+        msg: Valur of URL is {{URL}}    #in bash we use echo $VARNAME, in YAML {{VARNAME}}
