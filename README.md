@@ -21,5 +21,25 @@ To ansible, we need to supply the list of servers that needs to be amanaged by A
 
 ### Ansible is all about module
 
-
 ansible all -i inventory -e ansible_user=centos -e ansible_password=DevOps321 -m shell -a "df -h"
+ansible all -i inventory -e ansible_user=centos -e ansible_password=DevOps321 -m shell -a uptime
+
+Using this approach we can run only 1 command at a time.
+
+Automated way of dealing with ANSIBLE is with PAYBOOKS. Playbooks can be writted using YAML.
+
+### LEARNING YAML:
+
+     1) Dictionary
+     2) List
+     3) Map
+
+### YAML is indentation specific, that means spaces matters a lot.
+    A key with a value is called                Dictionary
+        name: ansible
+    A key with multiple values is called as     List
+    Courses:
+        -devops
+        -cloud
+        kubernetes
+    A
