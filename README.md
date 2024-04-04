@@ -57,3 +57,7 @@ A task is nothing an aciton that you want ansible to perform
 
 Ansible expected the playbooks to have .yaml or yml as extensions
 
+
+### HOW TO RUN A PLAYBOOK       ?
+
+    ''' $ ansible-playbook -i inv -e ansible_user=centos -e ansible_password=DevOps321 pbname.yaml'''
