@@ -5,4 +5,4 @@
   tasks: 
     - name: Printing URL
       ansible.builtin.debug:
-        msg: Valur of URL is {{URL}}    #in bash we use echo $VARNAME, in YAML {{VARNAME}}
+        msg: "Value of URL is {{URL}}"    #in bash we use echo $VARNAME, in YAML {{VARNAME}}
