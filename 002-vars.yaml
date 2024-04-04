@@ -9,7 +9,7 @@
     
     - name: Printing URL from task
       ansible.builtin.debug:
-        msg: "Value of URL is {{URL}}" 
+        msg: Value of URL is {{URL}} 
       vars:                           # Task level variables : if you declare a variable at task level,only that task can use
         URL: task.google.com
 
@@ -18,12 +18,12 @@
   ansible.builtin.debug:
     msg: "{{CITY}}"  
 
-- name: Printing OD Distro
-      ansible.builtin.debug:
-        msg: My OS Distro is {{ansible_distribution}} 
+# - name: Printing OD Distro
+#       ansible.builtin.debug:
+#         msg: My OS Distro is {{ansible_distribution}} 
 
 # Variable Precendece : cli variables > task variables > play variables
 
 ### When to use quotes and when not to use quotes in YAML while dealing with variables ?
 
-###  ---> if in your print msg, if you just have varaible, then it's a must to enclose them in "" 's 
+### if in your print msg, if you just have varaible, then it's a must to enclose them in "" 's , [no concept of '']
