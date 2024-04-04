@@ -30,16 +30,27 @@ Automated way of dealing with ANSIBLE is with PAYBOOKS. Playbooks can be writted
 
 ### LEARNING YAML:
 
-     1) Dictionary
-     2) List
-     3) Map
+     1) Dictionary      -- key with value
+     2) List            -- key with multiple values
+     3) Map             -- key with multiple key pairs
 
 ### YAML is indentation specific, that means spaces matters a lot.
     A key with a value is called                Dictionary
         name: ansible
     A key with multiple values is called as     List
-    Courses:
-        -devops
-        -cloud
-        kubernetes
-    A
+        Courses:
+            - devops
+            - cloud
+            - kubernetes
+    A key with multiple key value pairs is called as    Map
+        martin:
+            name: Martin D'vloper
+            job: Developer
+            skill: Elite
+
+# What is a PLAYBOOK  "Playbook - plays - tasks"
+    ''' scripts in ansible are referred as playbook  '''  Playbook - plays - tasks
+
+A playbook is a list of plays!!!
+A play is a list of tasks!!!
+A task is nothing an aciton that you want ansible to perform
