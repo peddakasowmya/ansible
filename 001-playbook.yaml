@@ -1,4 +1,4 @@
-name: Play1
+- name: Play1
   hosts: all
   tasks: 
     - name: Task1 of Play1
@@ -9,7 +9,7 @@ name: Play1
       ansible.builtin.debug:
         msg: "Hello from task2 of play1"
 
-name: Play2
+- name: Play2
   hosts: all
   tasks: 
     - name: Task1 of Play2
