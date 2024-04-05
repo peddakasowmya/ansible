@@ -18,9 +18,9 @@
       ansible.builtin.debug:
         msg: "{{CITY}}"  
 
-# - name: Printing OD Distro
-#       ansible.builtin.debug:
-#         msg: My OS Distro is {{ansible_distribution}} 
+    - name: Printing OD Distro
+      ansible.builtin.debug:
+        msg: My OS Distro is {{ansible_distribution}} 
 
 # Variable Precendece : cli variables >> task variables >> play variables
 
