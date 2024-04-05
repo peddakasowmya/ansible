@@ -16,7 +16,7 @@
 
     - name: Printing city name    #this is to display error for an un-declared variable
       ansible.builtin.debug:
-        msg: "{{CITY}}"  
+        msg: "{{CITY}}"         #we can give CITY value is command line
 
     - name: Printing OD Distro
       ansible.builtin.debug:
