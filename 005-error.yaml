@@ -1,0 +1,12 @@
+# In ansible, if any of the task in the play fails, the subsequent tasks will fail
+- name: Demo on errors
+  hosts: all 
+  tasks:
+    - name: Check Tomcat Is Running or Not 
+      ansible.builtin.shell: ps -ef | grep java | grep -v grep      
+      register: OUT    
+      ignore_errors: tr
+
+    - name: Run Shipping 
+      ansible.builtin.debug:
+        msg: Shipping is up 
