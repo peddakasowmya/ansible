@@ -7,7 +7,7 @@
   tasks: 
     - name: Running uptime time 
       ansible.builtin.shell: uptime       # SHELL module won't offer the output by default on screen, if you want you can register the output. 
-          register: OUT                       # Output will be register in a variable called OUT, which can be used in any of the tasks of the play
+      register: OUT                       # Output will be register in a variable called OUT, which can be used in any of the tasks of the play
 
     - name: Pritning uptime time 
       ansible.builtin.debug:
