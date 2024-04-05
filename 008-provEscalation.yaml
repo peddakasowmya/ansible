@@ -2,12 +2,19 @@
 
 
 - name: Demo on conditions 
-  hosts: all 
+  hosts: all
+  become: yes  # Run the playbook as a root user : This is like running the playbook as sudo : All the tasks of the playbook are executed as root user
+
   tasks: 
     - name: Checking User
       ansible.builtin.shell: id
       register: OUT
+      become_user: centos 
     
     - name: Printing User details
       ansible.builtin.debug:
         msg: "Username is {{OUT.stdout}}"
+
+    - name: Creating roboshop useraccount
+      ansible.builtin.user:
+        name: robot
