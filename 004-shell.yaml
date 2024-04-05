@@ -11,7 +11,7 @@
 
     - name: Pritning uptime time 
       ansible.builtin.debug:
-        msg: "uptime is {{OUT}}" 
+        msg: "uptime is {{OUT.stdout}}" 
     
     # - name: Capturing the bash exit code 
     #   ansible.builtin.set_fact:
