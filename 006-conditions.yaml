@@ -3,6 +3,7 @@
   hosts: all 
   vars:
     action: true 
+    bar: 3
   tasks: 
     - name: Run this only when the Distro is Centos
       ansible.builtin.debug:
