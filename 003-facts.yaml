@@ -7,7 +7,8 @@
   hosts: all 
   vars:                          # Play level variables : if you declare a variable at play level, all tasks of the play can inherit them
     URL: play.google.com
-  gather_facts: false      
+  # gather_facts: false      
+
   tasks:
     - name: printing url
       ansible.builtin.debug:
@@ -26,5 +27,5 @@
     - name: Printing OD Distro
       ansible.builtin.debug:
         msg: My OS Distro is {{ansible_distribution}} 
-        
+
 
