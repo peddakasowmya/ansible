@@ -1,0 +1,12 @@
+
+
+- name: Demo on loops 
+  hosts: all
+  tasks:
+    - name: Demo on using loops 
+      ansible.builtin.debug:
+        msg: "value is : {{item}}"          # Item is the keyword to represent the element in the loop as a part of the iteration
+      loop:
+        - 10
+        - 20
+        - 30    
