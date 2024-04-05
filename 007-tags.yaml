@@ -4,23 +4,29 @@
     - name: Installing frontend
       ansible.builtin.debug:
         msg: Installing frontend
+      tags: frontend
 
     - name: Starting frontend
       ansible.builtin.debug:
         msg: Starting frontend
+      tags: frontend
 
     - name: Installing App
       ansible.builtin.debug:
         msg: Installing App
+      tags: App
       
     - name: Installing App
       ansible.builtin.debug:
         msg: Installing App
+      tags: App
 
     - name: Installing DB
       ansible.builtin.debug:
         msg: Installing DB
+      tags: db
 
     - name: Starting DB
       ansible.builtin.debug:
         msg: Starting DB
+      tags: db
