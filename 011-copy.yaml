@@ -1,0 +1,9 @@
+### https://docs.ansible.com/ansible/latest/collections/ansible/builtin/copy_module.html
+
+- name: Demo on copying files to remote servers 
+  hosts: all 
+  tasks:
+    - name: copying the files
+      ansible.builtin.copy:
+        src: systemd.service
+        dest: /home/centos
