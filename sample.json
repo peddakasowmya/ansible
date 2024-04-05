@@ -1,0 +1,17 @@
+{
+    'changed': True, 
+    'stdout': ' 03:37:27 up 54 min,  2 users,  load average: 0.11, 0.04, 0.01', 
+    'stderr': '',
+    'rc': 0,  
+    'cmd': 'uptime', 
+    'start': '2024-04-05 03:37:27.289098', 
+    'end': '2024-04-05 03:37:27.295374', 
+    'delta': '0:00:00.006276', 
+    'msg': '', 
+    'stdout_lines': [' 03:37:27 up 54 min,  
+    2 users,  
+    load average: 0.11, 0.04, 0.01'], 
+    'stderr_lines': [], 
+    'failed': False
+   
+}
