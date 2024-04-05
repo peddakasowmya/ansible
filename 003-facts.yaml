@@ -1,0 +1,6 @@
+# Whenever ansible runs the playbook, it first collects the properties of all the machines and then it will start doing the CM -configuration management
+# What is a FACT ?
+# A fact nothing but the properties of the VM's. - virtual machine
+
+
+

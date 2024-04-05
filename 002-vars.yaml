@@ -14,7 +14,7 @@
         URL: task.google.com
 
 
-- name: Printing city name
+- name: Printing city name    #this is to display error for an un-declared variable
   ansible.builtin.debug:
     msg: "{{CITY}}"  
 
@@ -22,8 +22,9 @@
 #       ansible.builtin.debug:
 #         msg: My OS Distro is {{ansible_distribution}} 
 
-# Variable Precendece : cli variables > task variables > play variables
+# Variable Precendece : cli variables >> task variables >> play variables
 
 ### When to use quotes and when not to use quotes in YAML while dealing with variables ?
 
 ### if in your print msg, if you just have varaible, then it's a must to enclose them in "" 's , [no concept of '']
+
