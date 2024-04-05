@@ -2,7 +2,7 @@
 - name: Demo on conditions 
   hosts: all 
   vars:
-    action: false 
+    action: true 
   tasks: 
     - name: Run this only when the Distro is Centos
       ansible.builtin.debug:
@@ -19,7 +19,7 @@
         msg: Action is true 
       when: action 
 
-    # - name: Run this when bar is not defined 
-    #   ansible.builtin.debug:
-    #     msg: Bar is defined
-    #   when: bar is defined
+    - name: Run this when bar is not defined 
+      ansible.builtin.debug:
+        msg: Bar is defined
+      when: bar is defined
