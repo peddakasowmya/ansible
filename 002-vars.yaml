@@ -14,9 +14,9 @@
         URL: task.google.com
 
 
-- name: Printing city name    #this is to display error for an un-declared variable
-  ansible.builtin.debug:
-    msg: "{{CITY}}"  
+    - name: Printing city name    #this is to display error for an un-declared variable
+      ansible.builtin.debug:
+        msg: "{{CITY}}"  
 
 # - name: Printing OD Distro
 #       ansible.builtin.debug:
