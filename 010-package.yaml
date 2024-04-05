@@ -1,0 +1,17 @@
+### https://docs.ansible.com/ansible/latest/collections/ansible/builtin/package_module.html 
+
+- name: Demo on using package 
+  hosts: all 
+  become: yes
+  tasks:
+    - name: Installing nginx
+      ansible.builtin.package:
+        name: nginx
+        state: present
+
+    - name: Install the latest version of wget and jq
+      ansible.builtin.package:
+        name:
+          - wget
+          - jq
+        state: latest
