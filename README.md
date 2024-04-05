@@ -53,7 +53,7 @@ Automated way of dealing with ANSIBLE is with PAYBOOKS. Playbooks can be writted
 
 A playbook is a list of plays!!!
 A play is a list of tasks!!!
-A task is nothing an aciton that you want ansible to perform
+A task is nothing but an aciton that you want ansible to perform
 
 Ansible expected the playbooks to have .yaml or yml as extensions
 

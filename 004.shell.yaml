@@ -1,0 +1,21 @@
+
+# Usage of shell module is strictly restricted unless you don't have a relevant module in ANSIBLE COLLECTIONS
+# SHELL Module helps us to run the exact shell commands.
+- name: Demo on using shell Module  
+  hosts: all 
+  tasks: 
+    - name: Running uptime time 
+      ansible.builtin.shell: uptime       # SHELL module won't offer the output by default on screen, if you want you can register the output. 
+      register: OUT                       # Output will be register in a variable called OUT, which can be used in any of the tasks of the play
+
+    - name: Pritning uptime time 
+      ansible.builtin.debug:
+        msg: "uptime is {{OUT.stdout}}" 
+    
+    - name: Capturing the bash exit code 
+      ansible.builtin.set_fact:
+        EXITCODE: "{{OUT.rc}}"
+    
+    - name: Printing the exit code of bash 
+      ansible.builtin.debug:
+        msg: "Exit Code is {{EXITCODE}}"    
