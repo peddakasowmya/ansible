@@ -9,10 +9,10 @@
         msg: OS Distro is {{ansible_distribution}} 
       when: ansible_distribution == "CentOS"
 
-    # - name: Run this only when the Distro is Ubuntu
-    #   ansible.builtin.debug:
-    #     msg: OS Distro is {{ansible_distribution}} 
-    #   when: ansible_distribution == "Ubuntu" 
+    - name: Run this only when the Distro is Ubuntu
+      ansible.builtin.debug:
+        msg: OS Distro is {{ansible_distribution}} 
+      when: ansible_distribution == "Ubuntu" 
 
     # - name: Run this action
     #   ansible.builtin.debug:
