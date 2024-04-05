@@ -28,6 +28,8 @@ Using this approach we can run only 1 command at a time.
 
 Automated way of dealing with ANSIBLE is with PAYBOOKS. Playbooks can be writted using YAML.
 
+###### https://docs.ansible.com/ansible/latest/reference_appendices/YAMLSyntax.html
+
 ### LEARNING YAML:
 
      1) Dictionary      -- key with value

@@ -1,6 +1,7 @@
 
 # Usage of shell module is strictly restricted unless you don't have a relevant module in ANSIBLE COLLECTIONS
 # SHELL Module helps us to run the exact shell commands.
+### https://docs.ansible.com/ansible/latest/collections/ansible/builtin/shell_module.html
 - name: Demo on using shell Module  
   hosts: all 
   tasks: 
