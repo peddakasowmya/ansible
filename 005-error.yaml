@@ -1,4 +1,6 @@
 # In ansible, if any of the task in the play fails, the subsequent tasks will fail
+### https://docs.ansible.com/ansible/2.8/user_guide/playbooks_error_handling.html
+
 - name: Demo on errors
   hosts: all 
   tasks:
@@ -6,8 +8,6 @@
       ansible.builtin.shell: ps -ef | grep java | grep -v grep      
       register: OUT    
       ignore_errors: true
-
-### https://docs.ansible.com/ansible/2.8/user_guide/playbooks_error_handling.html
 
     - name: Run Shipping 
       ansible.builtin.debug:
