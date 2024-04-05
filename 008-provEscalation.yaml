@@ -1,0 +1,10 @@
+- name: Demo on conditions 
+  hosts: all 
+  tasks: 
+    - name: Checking User
+      ansible.builtin.shell: id
+      register: OUT
+    
+    - name: Printing User details
+      ansible.builtin.debug:
+      msg: "Username is {{OUT.stdout}}""
