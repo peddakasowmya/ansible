@@ -19,6 +19,6 @@
       ansible.builtin.set_fact:
         EXITCODE: "{{OUT.rc}}"
     
-    # - name: Printing the exit code of bash 
-    #   ansible.builtin.debug:
-    #     msg: "Exit Code is {{EXITCODE}}"    
+    - name: Printing the exit code of bash 
+      ansible.builtin.debug:
+        msg: "Exit Code is {{EXITCODE}}"    
