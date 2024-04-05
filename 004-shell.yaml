@@ -13,9 +13,11 @@
       ansible.builtin.debug:
         msg: "uptime is {{OUT.stdout}}" 
     
-    # - name: Capturing the bash exit code 
-    #   ansible.builtin.set_fact:
-    #     EXITCODE: "{{OUT.rc}}"
+  ### https://docs.ansible.com/ansible/latest/collections/ansible/builtin/set_fact_module.html
+
+    - name: Capturing the bash exit code 
+      ansible.builtin.set_fact:
+        EXITCODE: "{{OUT.rc}}"
     
     # - name: Printing the exit code of bash 
     #   ansible.builtin.debug:
