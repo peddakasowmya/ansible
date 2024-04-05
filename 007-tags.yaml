@@ -1,3 +1,6 @@
+### COMMAND To run the tags "-t"
+### gp ; ansible-playbook -i inventory -e ansible_user=centos -e ansible_password=DevOps321 007-tags.yaml -t app
+
 - name: Demo on conditions 
   hosts: all 
   tasks: 
