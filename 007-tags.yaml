@@ -1,0 +1,26 @@
+- name: Demo on conditions 
+  hosts: all 
+  tasks: 
+    - name: Installing frontend
+      ansible.builtin.debug:
+        msg: Installing frontend
+
+    - name: Starting frontend
+      ansible.builtin.debug:
+        msg: Starting frontend
+
+    - name: Installing App
+      ansible.builtin.debug:
+        msg: Installing App
+      
+    - name: Installing App
+      ansible.builtin.debug:
+        msg: Installing App
+
+    - name: Installing DB
+      ansible.builtin.debug:
+        msg: Installing DB
+
+    - name: Starting DB
+      ansible.builtin.debug:
+        msg: Starting DB
