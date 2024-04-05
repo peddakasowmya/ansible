@@ -5,7 +5,7 @@
     - name: Check Tomcat Is Running or Not 
       ansible.builtin.shell: ps -ef | grep java | grep -v grep      
       register: OUT    
-      ignore_errors: tr
+      ignore_errors: true
 
 ### https://docs.ansible.com/ansible/2.8/user_guide/playbooks_error_handling.html
 
