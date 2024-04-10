@@ -1,4 +1,8 @@
 # ansible
+### JENKINS credentials
+admin
+Password
+
 
 # ANSIBLE
 - Ansible is opensource, agent less, 
