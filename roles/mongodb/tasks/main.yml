@@ -34,7 +34,7 @@
     remote_src: yes
 
 - name: loading catalogue data
-  ansible.builtin.shell: mongo --host mongodb-{{ENV}}.roboshop.internal < /tmp/mongodb-main/{{item}}.js
+  ansible.builtin.shell: mongo --host mongodb-"{{ENV}}".roboshop.internal < /tmp/mongodb-main/{{item}}.js
   loop:
       - catalogue
       - users
