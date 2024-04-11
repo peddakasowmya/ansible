@@ -1,3 +1,6 @@
+### gp ; ansible-playbook -i inv-dev -e ansible_user=centos -e ansible_password=DevOps321 -e COMPONENT=mysql -e ENV=dev -e MYSQL_PSW=RoboShop@1 roboshop.yml
+
+
 - name: Disabling default {{COMPONENT}} repo
   ansible.builtin.shell: dnf module disable mysql -y 
 
