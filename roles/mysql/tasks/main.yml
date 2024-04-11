@@ -67,3 +67,8 @@
 
 - name: Configuring Server Name 
   ansible.builtin.shell: set-hostname {{COMPONENT}}
+
+
+
+### Command to check databases
+ # sudo mysql -uroot -pRoboShop@1
