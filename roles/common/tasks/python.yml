@@ -1,0 +1,33 @@
+- name: Installing Python
+  ansible.builtin.package:
+    name: 
+      - python36 
+      - gcc 
+      - python3-devel 
+    state: present 
+
+- name: Creating {{APPUSER}} user account
+  ansible.builtin.include_role:
+    name: common
+    tasks_from: create_user
+
+- name: Dealing Artifacts
+  ansible.builtin.include_role:
+    name: common
+    tasks_from: download_and_extract
+
+- name: Genetating Artifacts 
+  ansible.builtin.pip:
+    requirements: /home/{{APPUSER}}/{{COMPONENT}}/requirements.txt 
+    executable: pip3.6 
+
+
+- name: Configuring Svc
+  ansible.builtin.include_role:
+    name: common
+    tasks_from: config_svc
+
+- name: Set name
+  ansible.builtin.include_role:
+    name: common
+    tasks_from: set_name

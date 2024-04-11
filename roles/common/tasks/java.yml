@@ -1,0 +1,29 @@
+- name: Installing Java
+  ansible.builtin.dnf:
+    name: maven 
+    state: installed 
+
+- name: Creating {{APPUSER}} user account
+  ansible.builtin.include_role:
+    name: common
+    tasks_from: create_user 
+
+- name: Dealing Artifacts
+  ansible.builtin.include_role:
+    name: common
+    tasks_from: download_and_extract
+
+- name: Genetating Artifacts 
+  ansible.builtin.shell: mvn clean package && mv target/{{COMPONENT}}-1.0.jar {{COMPONENT}}.jar
+  args:
+    chdir: /home/roboshop/shipping/ 
+
+- name: Configuring Svc
+  ansible.builtin.include_role:
+    name: common
+    tasks_from: config_svc
+
+- name: Set name
+  ansible.builtin.include_role:
+    name: common
+    tasks_from: set_name
