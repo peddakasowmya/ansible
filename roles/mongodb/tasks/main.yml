@@ -8,7 +8,7 @@
     name: mongodb-org
     state: present
 
-# Installing mongodShell
+# Installing mongod Shell
 - name: Installing {{COMPONENT}}
   ansible.builtin.dnf:
     name: mongodb-org-shell
