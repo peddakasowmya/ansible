@@ -1,0 +1,88 @@
+- name: Disable default mysql version
+  ansible.builtin.shell: dnf module disable mysql -y
+
+- name: Configuring {{COMPONENT}} Repository
+  ansible.builtin.copy:
+    src: mysql.repo                                           # Location of the file on the machine where you're running this cript
+    dest: /etc/yum.repos.d/mysql.repo                       # Location of the file where you want to copy this to remote server.
+
+- name: Installing MySQL
+  ansible.builtin.dnf:
+    name:
+      - mysql-community-server
+    state: present
+
+- name: Installing pip
+  ansible.builtin.pip:
+    name: pymysql
+    executable: pip3
+
+- name: Starting {{COMPONENT}} Service
+  ansible.builtin.systemd:
+    name: mysqld  
+    state: started
+    enabled: yes
+
+- name: Extracting the mysql log file
+  ansible.builtin.slurp:
+    src: /var/log/mysqld.log
+  register: psw_log 
+
+# If any of the task in the block fails , tasks in the rescue will be executed. This is exception handling in ansible.
+- name: Verifying the password 
+  block:
+    - name: Get MySQL version with non-default credentials
+      community.mysql.mysql_info:
+        login_user: root 
+        login_password: "{{MYSQL_PSW}}"
+        filter: version
+  rescue:
+    - name: Extracting the password from logFile  
+      ansible.builtin.set_fact:
+        DEFAULT_PASSWORD: "{{psw_log['content'] | b64decode | regex_findall('.*temporary password.*')| join('') |split(' ') | last}}" 
+
+    - name: Changind default root password 
+      ansible.builtin.shell:  echo "ALTER USER 'root'@'localhost' IDENTIFIED BY 'RoboShop@1';" | mysql --connect-expired-password -uroot -p"{{DEFAULT_PASSWORD}}"
+
+    - name: Uninstalling Password Validarte Plutin
+      ansible.builtin.shell: echo "uninstall plugin validate_password;" | mysql -uroot -pRoboShop@1 
+      ignore_errors: yes
+
+- name: Download and extracting {{COMPONENT}} Schema
+  ansible.builtin.unarchive:
+    src: https://github.com/stans-robot-project/{{COMPONENT}}/archive/main.zip
+    dest: /tmp 
+    remote_src: yes   
+
+- name: Injecting the {{COMPONENT}} schema 
+  community.mysql.mysql_db:
+    name: all 
+    state: import
+    login_user: root
+    login_password: "{{MYSQL_PSW}}"
+    target: /tmp/{{COMPONENT}}-main/shipping.sql 
+
+
+# - name: Configure Yum Repo for MySQL
+#   ansible.builtin.copy:
+#     src: mysql.repo
+#     dest: /etc/yum.repos.d/mysql.repo
+
+# - name: Disable default mysql version
+#   ansible.builtin.shell: yum module disable mysql -y
+
+# - name: Install MySQL Community Server
+#   ansible.builtin.yum:
+#     name: mysql-community-server
+#     state: installed
+
+# - name: Start MySQL Service
+#   ansible.builtin.systemd:
+#     name: mysqld
+#     state: restarted
+#     enabled: yes
+
+# - name: Set Root Password
+#   ansible.builtin.shell: mysql_secure_installation --set-root-pass RoboShop@1
+
+
