@@ -1,0 +1,66 @@
+- name: Disabling default {{COMPONENT}} repo
+  ansible.builtin.shell: dnf module disable mysql -y 
+
+- name: Copies {{COMPONENT}} repo file
+  ansible.builtin.copy:
+    src: mysql.repo 
+    dest: /etc/yum.repos.d/mysql.repo
+
+- name: Installing {{COMPONENT}}
+  ansible.builtin.dnf:
+    name: mysql-community-server 
+    state: installed 
+
+- name: Installing pymysql as a pre-req of mysql_info module
+  ansible.builtin.pip:
+    name: pymysql
+    executable: pip3
+
+- name: Starting {{COMPONENT}}
+  ansible.builtin.systemd_service:
+    state: started
+    name: mysqld
+    enabled: yes
+
+- name: Extracting {{COMPONENT}} password file 
+  ansible.builtin.slurp:
+    src: /var/log/mysqld.log
+  register: psw_log
+
+# These 3 tasks I would like to run only for the first time and not if the password is already changes
+# If any of the task in the block fails, then all the tasks in the rescue will be executed
+# It's like IF ELSE Condition
+- name: validating the password 
+  block:
+    - name: Get MySQL version with non-default credentials
+      community.mysql.mysql_info:
+        login_user: root
+        login_password: "{{MYSQL_PSW}}"
+        filter: version
+  rescue:
+    - name: Capturing the bash exit code 
+      ansible.builtin.set_fact:
+        DEFAULT_PASSWORD: "{{psw_log.content|b64decode | regex_findall('.*temporary password.*')| join('') | split(' ')|last}}"
+
+    - name: Changing the default password 
+      ansible.builtin.shell: echo "ALTER USER 'root'@'localhost' IDENTIFIED BY 'RoboShop@1'" | mysql  --connect-expired-password -uroot -p"{{DEFAULT_PASSWORD}}"
+
+    - name: Uninstalling Password Validate Plugin
+      ansible.builtin.shell: echo "uninstall plugin validate_password" | mysql -uroot -pRoboShop@1 
+
+- name: Download and extract {{COMPONENT}} Schema
+  ansible.builtin.unarchive:
+    src: https://github.com/stans-robot-project/{{COMPONENT}}/archive/main.zip
+    dest: /tmp
+    remote_src: yes
+
+- name: Injecting {{COMPONENT}} Schema
+  community.mysql.mysql_db:
+    login_user: root
+    login_password: "{{MYSQL_PSW}}"
+    state: import
+    name: all
+    target: /tmp/{{COMPONENT}}-main/shipping.sql 
+
+- name: Configuring Server Name 
+  ansible.builtin.shell: set-hostname {{COMPONENT}}
