@@ -1,12 +1,12 @@
 
 [frontend]
-172.31.23.105 
+frontend-dev.roboshop.internal
 
 [mongodb]
-172.31.25.152
+mongodb-dev.roboshop.internal
 
 
 [catalogue]
-172.31.23.105 
+catalogue-dev.roboshop.internal
 
 [mongodb]
