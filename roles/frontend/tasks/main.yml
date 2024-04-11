@@ -32,10 +32,10 @@
 
 - name: Restarting {{COMPONENT}}
   ansible.builtin.systemd_service:
-    state: restarted
+    state: started
     name: nginx
     enabled: yes
-    daemon_reload: true
+    # daemon_reload: true
 
 - name: Configuring Server Name 
   ansible.builtin.shell: set-hostname {{COMPONENT}}
