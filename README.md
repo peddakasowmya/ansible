@@ -124,7 +124,7 @@ RabbitMQ:
 gp ; ansible-playbook -i inv-dev -e ansible_user=centos -e ansible_password=DevOps321 -e COMPONENT=rabbitmq -e ENV=dev roboshop.yml
 
 Payment:
-
+gp ; ansible-playbook -i inv-dev -e ansible_user=centos -e ansible_password=DevOps321 -e COMPONENT=payment -e ENV=dev roboshop.yml
 
 
 
