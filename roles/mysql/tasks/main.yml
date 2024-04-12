@@ -33,12 +33,13 @@
 # These 3 tasks I would like to run only for the first time and not if the password is already changes
 # If any of the task in the block fails, then all the tasks in the rescue will be executed
 # It's like IF ELSE Condition
+  
 - name: validating the password 
   block:
     - name: Get MySQL version with non-default credentials
       community.mysql.mysql_info:
         login_user: root
-        login_password: "{{MYSQL_PSW}}"   #provide the MYSQL_PSW in the command
+        login_password: "{{MYSQL_PSW}}"     ##provide the MYSQL_PSW in the command
         filter: version
   rescue:
     - name: Capturing the bash exit code 
