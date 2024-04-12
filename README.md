@@ -95,5 +95,36 @@ roles/
             main.yml      #  <-- role dependencies
 
 
+# Commands to run the Roboshop project:
+frontend: 
+gp ; ansible-playbook -i inv-dev -e ansible_user=centos -e ansible_password=DevOps321 -e COMPONENT=frontend -e ENV=dev roboshop.yml
+
+Mongodb:
+gp ; ansible-playbook -i inv-dev -e ansible_user=centos -e ansible_password=DevOps321 -e COMPONENT=mongodb -e ENV=dev roboshop.yml
+
+catalogue:
+gp ; ansible-playbook -i inv-dev -e ansible_user=centos -e ansible_password=DevOps321 -e COMPONENT=catalogue -e ENV=dev roboshop.yml
+
+redis:
+gp ; ansible-playbook -i inv-dev -e ansible_user=centos -e ansible_password=DevOps321 -e COMPONENT=redis -e ENV=dev roboshop.yml
+
+User:
+gp ; ansible-playbook -i inv-dev -e ansible_user=centos -e ansible_password=DevOps321 -e COMPONENT=user -e ENV=dev roboshop.yml
+
+cart:
+gp ; ansible-playbook -i inv-dev -e ansible_user=centos -e ansible_password=DevOps321 -e COMPONENT=cart -e ENV=dev roboshop.yml
+
+mySQL:
+gp ; ansible-playbook -i inv-dev -e ansible_user=centos -e ansible_password=DevOps321 -e COMPONENT=mysql -e ENV=dev -e MYSQL_PSW=RoboShop@1 roboshop.yml
+
+Shipping:
+gp ; ansible-playbook -i inv-dev -e ansible_user=centos -e ansible_password=DevOps321 -e COMPONENT=shipping -e ENV=dev roboshop.yml
+
+RabbitMQ:
+gp ; ansible-playbook -i inv-dev -e ansible_user=centos -e ansible_password=DevOps321 -e COMPONENT=rabbitmq -e ENV=dev roboshop.yml
+
+Payment:
+
+
 
 
