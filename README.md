@@ -128,3 +128,25 @@ gp ; ansible-playbook -i inv-dev -e ansible_user=centos -e ansible_password=DevO
 
 
 
+
+# Ensure you have 
+* sudo dnf install mysql-devel -y
+* sudo pip3 install mysqlclient
+
+
+# When to use PUSH and PULL Mechanisms ?
+
+    1) Push Mechanism Is Used, if your inventory is STATIC ( typically on-prem ) or wher is not concept of scaling, then you can use PUSH. Because your intentory maintenance is a one time job.  
+
+    2) Pull Mechanism Is User, if your inventory is dynamic that means servers would be coming up and down as a part of the SCALE OUT & SCALE IN Policies.
+
+       * In Pull Based Mechanism, the expectation is that when a server is provisioned, CM should also be coming up as a part of the startup
+       * For pull based mechanism, ensure the server should have the ansible Installed. 
+       * Ansible Installation can be done either by 
+
+                1) Placing the ANSIBLE Installation Script as a part of the system start up 
+                2) Ensure the AMI that you're using for your server creation should have Ansible Installed 
+                3) As of today, ansible-pull can only fetch the code from GIT based repositories only
+
+
+    
