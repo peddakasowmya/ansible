@@ -149,4 +149,6 @@ gp ; ansible-playbook -i inv-dev -e ansible_user=centos -e ansible_password=DevO
                 3) As of today, ansible-pull can only fetch the code from GIT based repositories only
 
 
-    
+### We can enter this in advanced section while creating the srever, as this will be executed at the time of execution.
+ex:
+ curl https://gitlab.com/thecloudcareers/opensource/-/raw/master/lab-tools/ansible/install.sh | sudo bash   
