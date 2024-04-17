@@ -144,9 +144,13 @@ gp ; ansible-playbook -i inv-dev -e ansible_user=centos -e ansible_password=DevO
        * For pull based mechanism, ensure the server should have the ansible Installed. 
        * Ansible Installation can be done either by 
 
-                1) Placing the ANSIBLE Installation Script as a part of the system start up 
-                2) Ensure the AMI that you're using for your server creation should have Ansible Installed 
-                3) As of today, ansible-pull can only fetch the code from GIT based repositories only
+            1) Placing the ANSIBLE Installation Script as a part of the system start up 
+                curl https://gitlab.com/thecloudcareers/opensource/-/raw/master/lab-tools/ansible/install.sh | sudo bash
+                
+            2) Ensure the AMI that you're using for your server creation should have Ansible Installed 
+            3) As of today, ansible-pull can only fetch the code from GIT based repositories only
+            
+            ansible-pull -U https://github.com/peddakasowmya/ansible.git -e ENV=dev -e COMPONENT=mongodb roboshop-pull.ym
 
 
 ### We can enter this in advanced section while creating the srever, as this will be executed at the time of execution.
